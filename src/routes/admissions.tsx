@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/select";
 
 export const Route = createFileRoute("/admissions")({
-  validateSearch: (search: Record<string, unknown>) => ({
+  validateSearch: (search: Record<string, unknown>): { program?: string } => ({
     program: typeof search.program === "string" ? search.program : undefined,
   }),
   head: () => ({
