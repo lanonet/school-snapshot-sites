@@ -1,8 +1,22 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useSearch } from "@tanstack/react-router";
+import { useState } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Loader2, PartyPopper, ArrowRight } from "lucide-react";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export const Route = createFileRoute("/admissions")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    program: typeof search.program === "string" ? search.program : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Admissions · Dolphins Montessori School" },
@@ -21,6 +35,115 @@ const steps = [
   { n: "04", t: "Family visit", d: "Bring your child in for a gentle observation with our guides in a real classroom." },
   { n: "05", t: "Welcome", d: "Receive an offer and complete enrollment. We're delighted to have you." },
 ];
+
+const PROGRAMS = [
+  "Toddler Community (18 months – 3 years)",
+  "Casa / Primary (3 – 6 years)",
+  "Lower Elementary (6 – 9 years)",
+  "Upper Elementary (9 – 12 years)",
+  "Not sure yet",
+];
+
+function matchProgram(hint?: string) {
+  if (!hint) return undefined;
+  return PROGRAMS.find((p) => p.toLowerCase().startsWith(hint.toLowerCase()));
+}
+
+function ApplicationForm() {
+  const { program } = useSearch({ from: "/admissions" });
+  const [status, setStatus] = useState<"idle" | "submitting" | "done">("idle");
+  const [childName, setChildName] = useState("");
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+    // Simulated submission — wire this up to your backend / email service when ready.
+    window.setTimeout(() => setStatus("done"), 900);
+  }
+
+  if (status === "done") {
+    return (
+      <div className="rounded-2xl bg-card p-10 ring-1 ring-border text-center">
+        <div className="mx-auto size-14 rounded-full bg-secondary text-forest-deep grid place-items-center">
+          <PartyPopper className="size-7" />
+        </div>
+        <h3 className="mt-5 text-2xl text-forest-deep">Thank you{childName ? `, we can't wait to meet ${childName}` : ""}!</h3>
+        <p className="mt-3 text-muted-foreground max-w-md mx-auto">
+          Your application has been received. Our admissions team will reach out within two
+          working days to arrange your Wednesday morning tour.
+        </p>
+        <Link to="/" className="mt-6 inline-flex btn-outline">Back to home</Link>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="rounded-2xl bg-card p-6 md:p-8 ring-1 ring-border grid gap-5">
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div className="grid gap-1.5">
+          <Label htmlFor="childName">Child's full name</Label>
+          <Input id="childName" required placeholder="e.g. Nana Ama" value={childName} onChange={(e) => setChildName(e.target.value)} />
+        </div>
+        <div className="grid gap-1.5">
+          <Label htmlFor="childDob">Child's date of birth</Label>
+          <Input id="childDob" type="date" required />
+        </div>
+      </div>
+
+      <div className="grid gap-1.5">
+        <Label htmlFor="program">Program of interest</Label>
+        <Select name="program" defaultValue={matchProgram(program) ?? undefined}>
+          <SelectTrigger id="program">
+            <SelectValue placeholder="Select a program" />
+          </SelectTrigger>
+          <SelectContent>
+            {PROGRAMS.map((p) => (
+              <SelectItem key={p} value={p}>{p}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div className="grid gap-1.5">
+          <Label htmlFor="parentName">Parent / guardian name</Label>
+          <Input id="parentName" required placeholder="Your full name" />
+        </div>
+        <div className="grid gap-1.5">
+          <Label htmlFor="parentPhone">Phone number</Label>
+          <Input id="parentPhone" type="tel" required placeholder="e.g. 024 000 0000" />
+        </div>
+      </div>
+
+      <div className="grid gap-1.5">
+        <Label htmlFor="parentEmail">Email address</Label>
+        <Input id="parentEmail" type="email" required placeholder="you@example.com" />
+      </div>
+
+      <div className="grid gap-1.5">
+        <Label htmlFor="startTerm">Preferred start term</Label>
+        <Input id="startTerm" placeholder="e.g. September 2027" />
+      </div>
+
+      <div className="grid gap-1.5">
+        <Label htmlFor="notes">Tell us about your child (optional)</Label>
+        <Textarea id="notes" rows={4} placeholder="Interests, personality, any support needs we should know about…" />
+      </div>
+
+      <button type="submit" disabled={status === "submitting"} className="btn-primary justify-self-start disabled:opacity-70">
+        {status === "submitting" ? (
+          <>
+            <Loader2 className="size-4 animate-spin" /> Submitting…
+          </>
+        ) : (
+          <>
+            Submit application <ArrowRight className="size-4" />
+          </>
+        )}
+      </button>
+    </form>
+  );
+}
 
 function Admissions() {
   return (
@@ -87,10 +210,24 @@ function Admissions() {
         </div>
       </section>
 
-      <section data-reveal className="container-page py-20">
+      <section id="apply-form" data-reveal className="container-page py-20 scroll-mt-24">
+        <div className="max-w-2xl">
+          <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold">Apply now</div>
+          <h2 className="mt-3 text-3xl md:text-4xl">Start your application.</h2>
+          <p className="mt-4 text-muted-foreground">
+            Fill in the form below and our admissions team will reach out within two working
+            days to schedule your Wednesday morning tour.
+          </p>
+        </div>
+        <div className="mt-10 max-w-2xl">
+          <ApplicationForm />
+        </div>
+      </section>
+
+      <section data-reveal className="container-page pb-20">
         <div className="rounded-[2rem] bg-gold/15 ring-1 ring-gold/40 p-10 md:p-14 grid md:grid-cols-[1fr_auto] items-center gap-6">
           <div>
-            <h2 className="text-3xl md:text-4xl">Ready to begin?</h2>
+            <h2 className="text-3xl md:text-4xl">Prefer to talk first?</h2>
             <p className="mt-3 text-muted-foreground max-w-xl">Send us an inquiry and our admissions team will be in touch within two working days.</p>
           </div>
           <Link to="/contact" className="btn-primary">Start an inquiry</Link>

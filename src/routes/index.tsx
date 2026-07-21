@@ -27,7 +27,7 @@ function HomePage() {
               through hands-on discovery, purposeful work and joyful play.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/admissions" className="btn-primary">Start your application <ArrowRight className="size-4" /></Link>
+              <Link to="/admissions" hash="apply-form" className="btn-primary">Start your application <ArrowRight className="size-4" /></Link>
               <Link to="/about" className="btn-outline">Meet our school</Link>
             </div>
             <dl className="mt-10 grid grid-cols-3 gap-6 max-w-md">
@@ -142,7 +142,7 @@ function HomePage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link to="/admissions" className="btn-primary">Book a tour</Link>
+            <Link to="/admissions" hash="apply-form" className="btn-primary">Book a tour</Link>
             <Link to="/contact" className="btn-outline">Contact us</Link>
           </div>
         </div>
