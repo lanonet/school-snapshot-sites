@@ -16,6 +16,7 @@ const nav = [
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  useScrollReveal();
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
