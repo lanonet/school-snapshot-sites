@@ -13,7 +13,7 @@ function HomePage() {
   return (
     <SiteLayout>
       {/* Hero */}
-      <section className="bg-paper">
+      <section data-reveal className="bg-paper">
         <div className="container-page pt-14 pb-20 md:pt-20 md:pb-28 grid gap-12 lg:grid-cols-12 items-center">
           <div className="lg:col-span-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-widest text-forest-deep">
@@ -60,7 +60,7 @@ function HomePage() {
       </section>
 
       {/* Pillars */}
-      <section className="container-page py-20">
+      <section data-reveal className="container-page py-20">
         <div className="max-w-2xl">
           <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold">The Dolphins Way</div>
           <h2 className="mt-3 text-3xl md:text-4xl">Learning shaped around the child.</h2>
@@ -85,7 +85,7 @@ function HomePage() {
       </section>
 
       {/* Feature split */}
-      <section className="bg-forest text-primary-foreground">
+      <section data-reveal className="bg-forest text-primary-foreground">
         <div className="container-page py-20 grid gap-12 md:grid-cols-2 items-center">
           <div className="rounded-[2rem] overflow-hidden ring-4 ring-gold/40">
             <img src={materials} alt="Child working with Montessori materials" width={1200} height={900} loading="lazy" className="w-full h-auto" />
@@ -117,7 +117,7 @@ function HomePage() {
       </section>
 
       {/* Testimonial */}
-      <section className="container-page py-20 grid gap-10 lg:grid-cols-12 items-center">
+      <section data-reveal className="container-page py-20 grid gap-10 lg:grid-cols-12 items-center">
         <div className="lg:col-span-5">
           <img src={playing} alt="Dolphins students playing outdoors" width={1400} height={1000} loading="lazy" className="rounded-[2rem] w-full h-auto shadow-xl" />
         </div>
@@ -132,7 +132,7 @@ function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="container-page pb-24">
+      <section data-reveal className="container-page pb-24">
         <div className="rounded-[2rem] bg-gold/15 ring-1 ring-gold/40 p-10 md:p-14 grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <h2 className="text-3xl md:text-4xl">Come visit us in Accra.</h2>

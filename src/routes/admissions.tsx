@@ -25,7 +25,7 @@ const steps = [
 function Admissions() {
   return (
     <SiteLayout>
-      <section className="bg-paper">
+      <section data-reveal className="bg-paper">
         <div className="container-page py-20 grid gap-8 md:grid-cols-[1.4fr_1fr] items-end">
           <div>
             <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold">Admissions 2026 / 2027</div>
@@ -46,7 +46,7 @@ function Admissions() {
         </div>
       </section>
 
-      <section className="container-page py-20">
+      <section data-reveal className="container-page py-20">
         <h2 className="text-3xl md:text-4xl">How to apply</h2>
         <ol className="mt-10 grid gap-4 md:grid-cols-5">
           {steps.map((s) => (
@@ -59,7 +59,7 @@ function Admissions() {
         </ol>
       </section>
 
-      <section className="bg-forest text-primary-foreground">
+      <section data-reveal className="bg-forest text-primary-foreground">
         <div className="container-page py-20 grid gap-10 md:grid-cols-2">
           <div>
             <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold">Fees & support</div>
@@ -87,7 +87,7 @@ function Admissions() {
         </div>
       </section>
 
-      <section className="container-page py-20">
+      <section data-reveal className="container-page py-20">
         <div className="rounded-[2rem] bg-gold/15 ring-1 ring-gold/40 p-10 md:p-14 grid md:grid-cols-[1fr_auto] items-center gap-6">
           <div>
             <h2 className="text-3xl md:text-4xl">Ready to begin?</h2>

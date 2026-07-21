@@ -18,7 +18,7 @@ export const Route = createFileRoute("/about")({
 function AboutPage() {
   return (
     <SiteLayout>
-      <section className="bg-paper">
+      <section data-reveal className="bg-paper">
         <div className="container-page py-20">
           <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold">About our school</div>
           <h1 className="mt-3 text-4xl md:text-6xl max-w-3xl leading-[1.05]">
@@ -31,7 +31,7 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="container-page py-20 grid gap-12 md:grid-cols-2 items-center">
+      <section data-reveal className="container-page py-20 grid gap-12 md:grid-cols-2 items-center">
         <img src={teacher} alt="Guide working with a student" width={1200} height={900} loading="lazy" className="rounded-[2rem] w-full h-auto shadow-xl" />
         <div>
           <h2 className="text-3xl md:text-4xl">Our story</h2>
@@ -48,7 +48,7 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-forest text-primary-foreground">
+      <section data-reveal className="bg-forest text-primary-foreground">
         <div className="container-page py-20 grid gap-10 md:grid-cols-3">
           {[
             { title: "Our mission", body: "To nurture confident, compassionate learners through authentic Montessori practice grounded in Ghanaian identity." },
@@ -63,7 +63,7 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="container-page py-20 grid gap-12 md:grid-cols-2 items-center">
+      <section data-reveal className="container-page py-20 grid gap-12 md:grid-cols-2 items-center">
         <div className="order-2 md:order-1">
           <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold">Our people</div>
           <h2 className="mt-3 text-3xl md:text-4xl">Guides, not teachers.</h2>

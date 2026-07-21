@@ -45,7 +45,7 @@ const programs = [
 function Academics() {
   return (
     <SiteLayout>
-      <section className="bg-paper">
+      <section data-reveal className="bg-paper">
         <div className="container-page py-20">
           <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold">Programs</div>
           <h1 className="mt-3 text-4xl md:text-6xl max-w-3xl leading-[1.05]">Four programs. One continuous journey.</h1>
@@ -56,7 +56,7 @@ function Academics() {
         </div>
       </section>
 
-      <section className="container-page py-20 grid gap-6 md:grid-cols-2">
+      <section data-reveal className="container-page py-20 grid gap-6 md:grid-cols-2">
         {programs.map(({ icon: Icon, age, name, body }) => (
           <article key={name} className="rounded-2xl bg-card p-8 ring-1 ring-border hover:ring-forest/30 transition-shadow hover:shadow-lg">
             <div className="flex items-center justify-between">
@@ -69,7 +69,7 @@ function Academics() {
         ))}
       </section>
 
-      <section className="bg-forest text-primary-foreground">
+      <section data-reveal className="bg-forest text-primary-foreground">
         <div className="container-page py-20 grid gap-12 md:grid-cols-2 items-center">
           <div>
             <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold">Enrichment</div>
@@ -94,7 +94,7 @@ function Academics() {
         </div>
       </section>
 
-      <section className="container-page py-20">
+      <section data-reveal className="container-page py-20">
         <div className="rounded-[2rem] bg-gold/15 ring-1 ring-gold/40 p-10 md:p-14 text-center">
           <h2 className="text-3xl md:text-4xl">Ready to see it for yourself?</h2>
           <p className="mt-3 text-muted-foreground max-w-xl mx-auto">

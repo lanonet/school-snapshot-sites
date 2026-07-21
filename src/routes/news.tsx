@@ -30,7 +30,7 @@ const events = [
 function News() {
   return (
     <SiteLayout>
-      <section className="bg-paper">
+      <section data-reveal className="bg-paper">
         <div className="container-page py-20">
           <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold">News & Events</div>
           <h1 className="mt-3 text-4xl md:text-6xl leading-[1.05] max-w-3xl">Life at Dolphins.</h1>
@@ -40,7 +40,7 @@ function News() {
         </div>
       </section>
 
-      <section className="container-page py-20 grid gap-12 lg:grid-cols-3">
+      <section data-reveal className="container-page py-20 grid gap-12 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <h2 className="text-2xl mb-6">Latest stories</h2>
           <div className="space-y-6">
