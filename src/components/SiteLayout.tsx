@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { Menu, X, MapPin, Phone, Mail } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const nav = [
   { to: "/", label: "Home" },
