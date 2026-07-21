@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { Menu, X, MapPin, Phone, Mail } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -15,6 +16,7 @@ const nav = [
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  useScrollReveal();
 
   return (
     <div className="min-h-screen flex flex-col bg-background">

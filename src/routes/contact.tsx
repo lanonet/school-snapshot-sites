@@ -19,7 +19,7 @@ function Contact() {
   const [sent, setSent] = useState(false);
   return (
     <SiteLayout>
-      <section className="bg-paper">
+      <section data-reveal className="bg-paper">
         <div className="container-page py-20">
           <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold">Get in touch</div>
           <h1 className="mt-3 text-4xl md:text-6xl leading-[1.05] max-w-3xl">We'd love to hear from you.</h1>
@@ -30,7 +30,7 @@ function Contact() {
         </div>
       </section>
 
-      <section className="container-page py-20 grid gap-12 lg:grid-cols-5">
+      <section data-reveal className="container-page py-20 grid gap-12 lg:grid-cols-5">
         <div className="lg:col-span-2 space-y-6">
           {[
             { icon: MapPin, label: "Visit us", value: "Olusegun Obasanjo Highway\nAccra, Greater Accra Region, Ghana" },
